@@ -35,6 +35,11 @@ void vetor::printArray()
 	}
 }
 
+int vetor::capacity()
+{
+	return this->capacity_;
+}
+
 vetor::~vetor()
 {
 	delete[] this->elements_;

@@ -19,6 +19,7 @@ struct elements
 
 class vetor
 {
+private:
 	//Tamanho atual do vetor de elementos
 	int size_;
 
@@ -42,6 +43,9 @@ public:
 
 	//Printa o vetor
 	void printArray();
+
+	//Retorna a capacidade máxima do vetor
+	int capacity();
 
 	//Destrutor da classe
 	~vetor();
