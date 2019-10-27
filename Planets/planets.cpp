@@ -15,7 +15,7 @@ void planets::fillPlanets()
 	}
 }
 
-void planets::printPlanets()
+void planets::printPlanets() const
 {
 	this->planets_->printArray();
 }

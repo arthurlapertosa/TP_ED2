@@ -42,10 +42,10 @@ public:
 	void pushbackEl(std::string name, int integer);
 
 	//Printa o vetor
-	void printArray();
+	void printArray() const;
 
 	//Retorna a capacidade máxima do vetor
-	int capacity();
+	int capacity() const;
 
 	//Destrutor da classe
 	~vetor();

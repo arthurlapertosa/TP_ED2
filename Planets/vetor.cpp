@@ -28,14 +28,14 @@ void vetor::pushbackEl(std::string name, int integer)
 	this->pushback(*element);
 }
 
-void vetor::printArray()
+void vetor::printArray() const
 {
 	for (int i = 0; i < size_; i++) {
 		cout << elements_[i].planet << " => " << elements_[i].stayTime << endl;
 	}
 }
 
-int vetor::capacity()
+int vetor::capacity() const
 {
 	return this->capacity_;
 }

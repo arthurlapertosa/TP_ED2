@@ -30,7 +30,7 @@ public:
 	void fillPlanets();
 
 	//Printa os planetas
-	void printPlanets();
+	void printPlanets() const;
 
 private:
 	//Constroi o vetor de planetas
