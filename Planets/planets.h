@@ -32,6 +32,9 @@ public:
 	//Printa os planetas
 	void printPlanets() const;
 
+	//Organiza em ordem crescente de "StayTime" o vetor de planetas
+	void sort();
+
 private:
 	//Constroi o vetor de planetas
 	void buildPlanets();

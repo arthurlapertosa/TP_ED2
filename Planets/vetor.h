@@ -47,9 +47,16 @@ public:
 	//Retorna a capacidade máxima do vetor
 	int capacity() const;
 
+	//Organiza o vetor em ordem crescente de "stayTime"
+	void sort();
+
 	//Destrutor da classe
 	~vetor();
 
+private:
+	void mergeSort(elements aux[], int esq, int dir);
+
+	void merge(elements aux[], int esq, int meio, int dir);
 };
 
 #endif //VETOR_H

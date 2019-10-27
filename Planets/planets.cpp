@@ -20,6 +20,11 @@ void planets::printPlanets() const
 	this->planets_->printArray();
 }
 
+void planets::sort()
+{
+	planets_->sort();
+}
+
 void planets::buildPlanets()
 {
 	int time, numberOfPlanets, numberOfCharacteres;
