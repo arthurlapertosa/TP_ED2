@@ -44,6 +44,8 @@ void vetor::sort()
 {
 	auto* aux = new elements[this->capacity()];
 	this->mergeSort(aux, 0, this->capacity() - 1);
+	//Deleta o vetor auxiliar depois de dar o sort (ele não é mais necessário)
+	delete[] aux;
 }
 
 vetor::~vetor()
