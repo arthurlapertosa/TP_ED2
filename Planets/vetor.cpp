@@ -15,7 +15,8 @@ elements& vetor::operator[](int index) const
 void vetor::pushback(elements& element)
 {
 	if (size_ == capacity_) {
-		auto* novo = new elements[capacity_ * 2];
+		capacity_ *= 2;
+		auto* novo = new elements[capacity_];
 		for (int i = 0; i < size_; i++) {
 			novo[i] = elements_[i];
 		}
@@ -49,6 +50,11 @@ void vetor::printArray(int mes) const
 int vetor::capacity() const
 {
 	return this->capacity_;
+}
+
+int vetor::size() const
+{
+	return this->size_;
 }
 
 void vetor::sort()

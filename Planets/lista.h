@@ -19,9 +19,6 @@ private:
 	//Tamanho da lista
 	int cardinalidade_;
 
-	//Para a classe planets poder acessar a lista diretamente.
-	friend class planets;
-
 public:
 	//Cria uma lista vazia
 	lista();

@@ -50,6 +50,9 @@ public:
 	//Retorna a capacidade máxima do vetor
 	int capacity() const;
 
+	//Retorna o tamanho do vetor
+	int size() const;
+
 	//Organiza o vetor em ordem crescente de "stayTime"
 	void sort();
 

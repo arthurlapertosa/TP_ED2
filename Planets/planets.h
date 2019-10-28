@@ -5,6 +5,7 @@
 #include <iostream>
 #include "vetor.h"
 #include <cstdio>
+#include "lista.h"
 
 using std::cout;
 using std::endl;
@@ -12,7 +13,7 @@ using std::endl;
 class planets
 {
 private:
-	//Vetor de planetas
+	//Vetor geral de planetas
 	vetor* planets_;
 
 	//Tempo gasto por mes por planeta
@@ -21,6 +22,8 @@ private:
 	//Numero de caracteres que o nome dos planetas têm
 	int numberCharacteres_;
 
+	//Lista com os subvetores correspondentes aos meses e os respetivos planetas para visitação
+	lista planetsVisitation_;
 
 public:
 	//Inicializa a classe, chamando a função de construir o vetor de planetas
@@ -34,6 +37,12 @@ public:
 
 	//Organiza em ordem crescente de "StayTime" o vetor de planetas
 	void sort();
+
+	//Constrói a lista de visitação
+	void buildVisitationList();
+
+	//Printa a lista com os meses de visitação
+	void printList();
 
 	//Retorna o vetor de planetas
 	vetor& planetsArray();
