@@ -63,9 +63,7 @@ public:
 	~vetor();
 
 private:
-	void mergeSort(elements aux[], int esq, int dir);
-
-	void merge(elements aux[], int esq, int meio, int dir);
+	void troca(elements& a, elements& b);
 
 	void mergeSortName(elements aux[], int esq, int dir);
 
