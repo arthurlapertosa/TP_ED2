@@ -35,7 +35,14 @@ void vetor::pushbackEl(std::string name, int integer)
 void vetor::printArray() const
 {
 	for (int i = 0; i < size_; i++) {
-		cout << elements_[i].planet << " => " << elements_[i].stayTime << endl;
+		cout << elements_[i].planet << " " << elements_[i].stayTime << endl;
+	}
+}
+
+void vetor::printArray(int mes) const
+{
+	for (int i = 0; i < size_; i++) {
+		cout << mes << " " << elements_[i].planet << " " << elements_[i].stayTime << endl;
 	}
 }
 

@@ -41,8 +41,11 @@ public:
 	//Cria e adiciona um novo elemento ao vetor
 	void pushbackEl(std::string name, int integer);
 
-	//Printa o vetor
+	//Printa somente o vetor.
 	void printArray() const;
+
+	//Printa o vetor. Recebe o mês de visitação como parâmetro (para ser impresso juntamente, na frente de cada elemento)
+	void printArray(int mes) const;
 
 	//Retorna a capacidade máxima do vetor
 	int capacity() const;

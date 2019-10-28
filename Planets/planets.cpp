@@ -25,6 +25,11 @@ void planets::sort()
 	planets_->sort();
 }
 
+vetor& planets::planetsArray()
+{
+	return *planets_;
+}
+
 void planets::buildPlanets()
 {
 	int time, numberOfPlanets, numberOfCharacteres;

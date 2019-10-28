@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="lista.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="planets.cpp" />
     <ClCompile Include="vetor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lista.h" />
     <ClInclude Include="planets.h" />
     <ClInclude Include="vetor.h" />
   </ItemGroup>

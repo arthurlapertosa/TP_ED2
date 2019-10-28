@@ -35,6 +35,8 @@ public:
 	//Organiza em ordem crescente de "StayTime" o vetor de planetas
 	void sort();
 
+	//Retorna o vetor de planetas
+	vetor& planetsArray();
 private:
 	//Constroi o vetor de planetas
 	void buildPlanets();
