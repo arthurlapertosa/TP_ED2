@@ -56,6 +56,9 @@ public:
 	//Organiza o vetor em ordem crescente de "stayTime"
 	void sort();
 
+	//Organiza o vetor em ordem crescente de "nome"
+	void sortName();
+
 	//Destrutor da classe
 	~vetor();
 
@@ -63,6 +66,10 @@ private:
 	void mergeSort(elements aux[], int esq, int dir);
 
 	void merge(elements aux[], int esq, int meio, int dir);
+
+	void mergeSortName(elements aux[], int esq, int dir);
+
+	void mergeName(elements aux[], int esq, int meio, int dir);
 };
 
 #endif //VETOR_H

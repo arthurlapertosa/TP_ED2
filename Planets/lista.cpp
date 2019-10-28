@@ -31,7 +31,6 @@ void lista::printL()
 	for (i = sentinela->esq; i != sentinela; i = i->esq) {
 		i->planetsArray->printArray(i->mesEnum);
 	}
-	std::cout << std::endl;
 }
 
 lista::~lista()

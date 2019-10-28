@@ -43,6 +43,8 @@ void planets::buildVisitationList()
 		}
 		//Tempo daquele mês se esgotou
 		else {
+			//Organiza o vetor em ordem alfabética
+			aux->sortName();
 			//Adiciona o subvetor de planetas à lista e soma 1 ao mês
 			planetsVisitation_.addElement(*aux, month++);
 			//Cria um novo vetor aux
@@ -53,6 +55,7 @@ void planets::buildVisitationList()
 			i--;
 		}
 	}
+	aux->sortName();
 	planetsVisitation_.addElement(*aux, month);
 }
 

@@ -59,8 +59,16 @@ int vetor::size() const
 
 void vetor::sort()
 {
-	auto* aux = new elements[this->capacity()];
-	this->mergeSort(aux, 0, this->capacity() - 1);
+	auto* aux = new elements[this->size()];
+	this->mergeSort(aux, 0, this->size() - 1);
+	//Deleta o vetor auxiliar depois de dar o sort (ele não é mais necessário)
+	delete[] aux;
+}
+
+void vetor::sortName()
+{
+	auto* aux = new elements[this->size()];
+	this->mergeSortName(aux, 0, this->size() - 1);
 	//Deleta o vetor auxiliar depois de dar o sort (ele não é mais necessário)
 	delete[] aux;
 }
@@ -95,7 +103,52 @@ void vetor::merge(elements aux[], int esq, int meio, int dir)
 	j = dir;
 	for (k = esq; k <= dir; k++) {
 		if (aux[i].stayTime <= aux[j].stayTime) {
-			elements_[k] = aux[i++];
+			//Para tornar o algoritmo estável, precisou desta última verificação
+			if(i <= meio){
+				elements_[k] = aux[i++];
+			}
+			else {
+				elements_[k] = aux[j--];
+			}
+		}
+		else {
+			elements_[k] = aux[j--];
+		}
+	}
+}
+
+void vetor::mergeSortName(elements aux[], int esq, int dir)
+{
+	int meio = (esq + dir) / 2;
+	if (esq < dir) {
+		mergeSortName(aux, esq, meio);
+		mergeSortName(aux, meio + 1, dir);
+		mergeName(aux, esq, meio, dir);
+	}
+}
+
+void vetor::mergeName(elements aux[], int esq, int meio, int dir)
+{
+	int i, j, k;
+	//copia o vetor a ser organizado para o vetor auxiliar.
+	for (i = esq; i <= meio; i++) {
+		aux[i] = elements_[i];
+	}
+	//de forma reversa a segunda parte do vetor a ser organizado
+	for (j = meio + 1; j <= dir; j++) {
+		aux[dir - j + meio + 1] = elements_[j];
+	}
+	i = esq;
+	j = dir;
+	for (k = esq; k <= dir; k++) {
+		if (aux[i].planet <= aux[j].planet) {
+			//Para tornar o algoritmo estável, precisou desta última verificação
+			if (i <= meio) {
+				elements_[k] = aux[i++];
+			}
+			else {
+				elements_[k] = aux[j--];
+			}
 		}
 		else {
 			elements_[k] = aux[j--];
