@@ -59,15 +59,16 @@ int vetor::size() const
 
 void vetor::sort()
 {
-	int min;
-	for (int i = 0; i < this->size(); i++) {
-		min = i;
-		for (int j = i; j < size(); j++) {
-			if (elements_[j].stayTime < elements_[min].stayTime) {
-				min = j;
-			}
+	int i, j;
+	elements aux;
+	for (i = 1; i < size(); i++) {
+		aux = elements_[i];
+		j = i - 1;
+		while (j >= 0 && (aux.stayTime < elements_[j].stayTime)) {
+			elements_[j + 1] = elements_[j];
+			j--;
 		}
-		troca(elements_[min], elements_[i]);
+		elements_[j + 1] = aux;
 	}
 }
 
