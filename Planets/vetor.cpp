@@ -15,8 +15,12 @@ elements& vetor::operator[](int index) const
 void vetor::pushback(elements& element)
 {
 	if (size_ == capacity_) {
-		cout << "Capacidade máxima do vetor atingida" << endl;
-		return;
+		auto* novo = new elements[capacity_ * 2];
+		for (int i = 0; i < size_; i++) {
+			novo[i] = elements_[i];
+		}
+		delete[] elements_;
+		elements_ = novo;
 	}
 	elements_[size_] = element;
 	size_++;
