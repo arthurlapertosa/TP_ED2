@@ -1,10 +1,11 @@
 #include "vetor.h"
 
-vetor::vetor(int capacity)
+vetor::vetor(int capacity, int stringSize)
 {
 	this->elements_ = new elements[capacity];
 	this->size_ = 0;
 	this->capacity_ = capacity;
+	this->stringsize_ = stringSize;
 }
 
 elements& vetor::operator[](int index) const
@@ -67,10 +68,7 @@ void vetor::sort()
 
 void vetor::sortName()
 {
-	auto* aux = new elements[this->size()];
-	this->mergeSortName(aux, 0, this->size() - 1);
-	//Deleta o vetor auxiliar depois de dar o sort (ele não é mais necessário)
-	delete[] aux;
+	this->radixSort();
 }
 
 vetor::~vetor()
@@ -117,41 +115,37 @@ void vetor::merge(elements aux[], int esq, int meio, int dir)
 	}
 }
 
-void vetor::mergeSortName(elements aux[], int esq, int dir)
+void vetor::radixSort()
 {
-	int meio = (esq + dir) / 2;
-	if (esq < dir) {
-		mergeSortName(aux, esq, meio);
-		mergeSortName(aux, meio + 1, dir);
-		mergeName(aux, esq, meio, dir);
+	for (int i = 0; i < this->stringsize_; i++) {
+		this->countingSortChar(i);
 	}
 }
 
-void vetor::mergeName(elements aux[], int esq, int meio, int dir)
+void vetor::countingSortChar(int index)
 {
-	int i, j, k;
-	//copia o vetor a ser organizado para o vetor auxiliar.
-	for (i = esq; i <= meio; i++) {
-		aux[i] = elements_[i];
+	//Cria-se um vetor de 256 elementos, pois um char tem 1 byte, então vai até 256.
+	int* vetorCount = new int[256];
+	//Inicializa vetor com zeros
+	for (int i = 0; i < 256; i++) {
+		vetorCount[i] = 0;
 	}
-	//de forma reversa a segunda parte do vetor a ser organizado
-	for (j = meio + 1; j <= dir; j++) {
-		aux[dir - j + meio + 1] = elements_[j];
+	
+	for (int i = 0; i < this->size_; i++) {
+		vetorCount[(unsigned char)elements_[i].planet[index]]++;
 	}
-	i = esq;
-	j = dir;
-	for (k = esq; k <= dir; k++) {
-		if (aux[i].planet <= aux[j].planet) {
-			//Para tornar o algoritmo estável, precisou desta última verificação
-			if (i <= meio) {
-				elements_[k] = aux[i++];
-			}
-			else {
-				elements_[k] = aux[j--];
-			}
-		}
-		else {
-			elements_[k] = aux[j--];
-		}
+	for (int i = 1; i < 256; i++) {
+		vetorCount[i] += vetorCount[i - 1];
 	}
+	elements* novo = new elements[this->size_];
+	elements* antigo = this->elements_;
+
+	for (int i = this->size_ - 1; i >= 0; i--) {
+		int novoIndice = --vetorCount[(unsigned char)elements_[i].planet[index]];
+		novo[novoIndice] = elements_[i];
+	}
+	this->elements_ = novo;
+	delete[] antigo;
+	this->printArray();
 }
+

@@ -26,11 +26,13 @@ private:
 	//Capacidade máxima do vetor
 	int capacity_;
 
+	int stringsize_;
+
 	//Contém o vetor com todos os elementos
 	elements* elements_;
 public:
 	//Cria um vetor com tamanho máximo de "capacity"
-	vetor(int capacity);
+	vetor(int capacity, int stringSize);
 
 	//Retorna o elemento da posição index
 	elements& operator[](int index) const;
@@ -67,9 +69,11 @@ private:
 
 	void merge(elements aux[], int esq, int meio, int dir);
 
-	void mergeSortName(elements aux[], int esq, int dir);
+	//Método radixSort
+	void radixSort();
 
-	void mergeName(elements aux[], int esq, int meio, int dir);
+	//Faz o counting sort dos elementos na posição "index" dos nomes dos planetas - usado para o radix sort.
+	void countingSortChar(int index = 0);
 };
 
 #endif //VETOR_H
