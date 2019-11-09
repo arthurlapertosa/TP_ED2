@@ -117,7 +117,7 @@ void vetor::merge(elements aux[], int esq, int meio, int dir)
 
 void vetor::radixSort()
 {
-	for (int i = 0; i < this->stringsize_; i++) {
+	for(int i = this->stringsize_ - 1; i >= 0; i--) {
 		this->countingSortChar(i);
 	}
 }
@@ -146,6 +146,5 @@ void vetor::countingSortChar(int index)
 	}
 	this->elements_ = novo;
 	delete[] antigo;
-	this->printArray();
 }
 
