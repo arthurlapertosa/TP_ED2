@@ -62,7 +62,7 @@ void vetor::sort()
 {
 	auto* aux = new elements[this->size()];
 	this->mergeSort(aux, 0, this->size() - 1);
-	//Deleta o vetor auxiliar depois de dar o sort (ele não é mais necessário)
+	//Deleta o vetor auxiliar depois de dar o sort (ele nao eh mais necessario)
 	delete[] aux;
 }
 
@@ -99,9 +99,10 @@ void vetor::merge(elements aux[], int esq, int meio, int dir)
 	}
 	i = esq;
 	j = dir;
+	//Ordena o vetor
 	for (k = esq; k <= dir; k++) {
 		if (aux[i].stayTime <= aux[j].stayTime) {
-			//Para tornar o algoritmo estável, precisou desta última verificação
+			//Para tornar o algoritmo estavel, precisou desta ultima verificacao
 			if(i <= meio){
 				elements_[k] = aux[i++];
 			}
@@ -124,27 +125,35 @@ void vetor::radixSort()
 
 void vetor::countingSortChar(int index)
 {
-	//Cria-se um vetor de 256 elementos, pois um char tem 1 byte, então vai até 256.
+	//Cria-se um vetor de 256 elementos, pois um char tem 1 byte, entao vai ate 256.
 	int* vetorCount = new int[256];
 	//Inicializa vetor com zeros
 	for (int i = 0; i < 256; i++) {
 		vetorCount[i] = 0;
 	}
-	
+	//Faz a contagem dos elementos de "elements" e armazena em "vetorCount"
 	for (int i = 0; i < this->size_; i++) {
 		vetorCount[(unsigned char)elements_[i].planet[index]]++;
 	}
+	//Realizar a soma acumulada dos elementos de vetorCount, de maneira que vetorCount[i] = vetorCount[i-1] + vetorCount[i], para i > 0
 	for (int i = 1; i < 256; i++) {
 		vetorCount[i] += vetorCount[i - 1];
 	}
+	//O novo vetor ordenado
 	elements* novo = new elements[this->size_];
+
+	//MantÃ©m a referÃªncia do vetor antigo, para deletÃ¡-lo depois
 	elements* antigo = this->elements_;
 
+	// Percorrer "elements_" do Ãºltimo elemento para o primeiro, de maneira que: novo [ vetorCount [ elements_[i] ] - 1] = elements_[i].
+	//Ã‰ ainda necessÃ¡rio decrementar em 1 unidade o elemento vetorCount[ elements_[i] ]
 	for (int i = this->size_ - 1; i >= 0; i--) {
 		int novoIndice = --vetorCount[(unsigned char)elements_[i].planet[index]];
 		novo[novoIndice] = elements_[i];
 	}
+	//Faz o vetor "elements_" ser igual ao vetor auxiliar "novo"
 	this->elements_ = novo;
+	//Deleta o vetor "elements_" antigo.
 	delete[] antigo;
 }
 

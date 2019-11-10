@@ -23,18 +23,19 @@ private:
 	//Tamanho atual do vetor de elementos
 	int size_;
 
-	//Capacidade máxima do vetor
+	//Capacidade maxima do vetor
 	int capacity_;
 
+	//Contem o tamanho da string.
 	int stringsize_;
 
-	//Contém o vetor com todos os elementos
+	//Contem o vetor com todos os elementos
 	elements* elements_;
 public:
-	//Cria um vetor com tamanho máximo de "capacity"
+	//Cria um vetor com tamanho maximo de "capacity"
 	vetor(int capacity, int stringSize);
 
-	//Retorna o elemento da posição index
+	//Retorna o elemento da posicao index
 	elements& operator[](int index) const;
 
 	//Adiciona um novo elemento ao vetor
@@ -46,10 +47,10 @@ public:
 	//Printa somente o vetor.
 	void printArray() const;
 
-	//Printa o vetor. Recebe o mês de visitação como parâmetro (para ser impresso juntamente, na frente de cada elemento)
+	//Printa o vetor. Recebe o mes de visitacao como parametro (para ser impresso juntamente, na frente de cada elemento)
 	void printArray(int mes) const;
 
-	//Retorna a capacidade máxima do vetor
+	//Retorna a capacidade maxima do vetor
 	int capacity() const;
 
 	//Retorna o tamanho do vetor
@@ -69,11 +70,11 @@ private:
 
 	void merge(elements aux[], int esq, int meio, int dir);
 
-	//Método radixSort
+	//Metodo radixSort
 	void radixSort();
 
-	//Faz o counting sort dos elementos na posição "index" dos nomes dos planetas - usado para o radix sort.
-	void countingSortChar(int index = 0);
+	//Faz o counting sort dos elementos na posicao "index" dos nomes dos planetas - usado para fazer o radix sort.
+	void countingSortChar(int index);
 };
 
 #endif //VETOR_H
