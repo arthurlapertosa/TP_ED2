@@ -142,10 +142,10 @@ void vetor::countingSortChar(int index)
 	//O novo vetor ordenado
 	elements* novo = new elements[this->size_];
 
-	//Mantém a referência do vetor antigo, para deletá-lo depois
+	//Mantém a referência do vetor antigo, para deleta-lo depois
 	elements* antigo = this->elements_;
 
-	// Percorrer "elements_" do último elemento para o primeiro, de maneira que: novo [ vetorCount [ elements_[i] ] - 1] = elements_[i].
+	// Percorrer "elements_" do ultimo elemento para o primeiro, de maneira que: novo [ vetorCount [ elements_[i] ] - 1] = elements_[i].
 	//É ainda necessário decrementar em 1 unidade o elemento vetorCount[ elements_[i] ]
 	for (int i = this->size_ - 1; i >= 0; i--) {
 		int novoIndice = --vetorCount[(unsigned char)elements_[i].planet[index]];
